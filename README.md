@@ -7,3 +7,20 @@ Node modules:
 * restful
 * pm2
 * lodash
+
+# To run only the server, go to /backend folder and run 
+    
+    npm run dev
+
+or <br/>
+    
+    npm run production
+    
+# To run the application, go to /frontend folder and run
+
+    npm run dev (with live reload)
+    
+or <br/>
+
+    npm run production
+   
