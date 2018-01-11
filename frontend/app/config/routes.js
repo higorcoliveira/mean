@@ -7,9 +7,11 @@
               url: "/dashboard",
               templateUrl: "dashboard/dashboard.html",
               controller: "DashboardCtrl as dashboard"
-          }).state('billingCycle', {
+          })
+          .state('billingCycle', {
               url: "/billingCycle",
-              templateUrl: "billingCycle/tabs.html"
+              templateUrl: "billingCycle/tabs.html",
+              controller: "BillingCycleCtrl as bcCtrl"
           })
 
           $urlRouterProvider.otherwise('/dashboard')
