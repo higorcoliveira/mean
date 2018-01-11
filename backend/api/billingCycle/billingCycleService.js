@@ -8,12 +8,13 @@ BillingCycle.updateOptions({new: true, runValidators: true});
 
 // interceptor de resposta
 BillingCycle.after('post', sendErrorsOrNext)
-            .after('put', sendErrorsOrNext);
+            .after('put', sendErrorsOrNext)
+            .after('delete', sendErrorsOrNext);
 
 function sendErrorsOrNext(req, res, next) {
     // pegar os erros do node-restful
     const bundle = res.locals.bundle;
-    
+
     if (bundle.errors) {
         var errors = parseErrors(bundle.errors);
         res.status(500).json({errors});
@@ -24,9 +25,9 @@ function sendErrorsOrNext(req, res, next) {
 
 function parseErrors(nodeRestfulErrors) {
     const errors = [];
-    
+
     _.forIn(nodeRestfulErrors, error => errors.push(error.message));
-    
+
     return errors;
 }
 
