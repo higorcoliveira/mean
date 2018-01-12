@@ -18,18 +18,6 @@ Componente que imprime as boxes que contém os valores do Dashboard
         this.$onInit = () => this.gridClasses = gridSystem.toCssClasses(this.grid)
       }
     ],
-    template: `
-      <div class="{{ $ctrl.gridClasses }}">
-          <div class="small-box {{ $ctrl.colorClass }}">
-            <div class="inner">
-              <h3>{{ $ctrl.value }}</h3>
-              <p>{{ $ctrl.label }}</p>
-            </div>
-            <div class="icon">
-              <i class="fa {{ $ctrl.iconClass }}"></i>
-            </div>
-          </div>
-      </div>
-    `
+    templateUrl: 'common/component/template/valueBox.html'    
   })
 })()

@@ -9,7 +9,7 @@
               controller: "DashboardCtrl as dashboard"
           })
           .state('billingCycle', {
-              url: "/billingCycle",
+              url: "/billingCycles?page",
               templateUrl: "billingCycle/tabs.html",
               controller: "BillingCycleCtrl as bcCtrl"
           })

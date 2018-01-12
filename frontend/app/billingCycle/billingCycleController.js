@@ -1,20 +1,28 @@
 (function () {
   angular.module('primeiraApp').controller('BillingCycleCtrl', [
-    '$http', 'msgs', 'tabs',
+    '$http', '$location', 'msgs', 'tabs',
     BillingCycleController
   ])
 
-  function BillingCycleController($http, msgs, tabs) {
+  function BillingCycleController($http, $location, msgs, tabs) {
     const vm = this
-    // TODO extrair para uma constante
+    // TODO extrair para constantes
     const url = 'http://localhost:3003/api/billingCycles'
+    const pageSize = 10
 
     vm.refresh = () => {
-      $http.get(url).then(response => {
+      const page = parseInt($location.search().page) || 1
+
+      $http.get(`${url}?skip=${(page - 1) * pageSize}&limit=10`).then(response => {
         vm.billingCycle = {credits: [{}], debts: [{}]}
         vm.billingCycles = response.data
         vm.calculateValues()
-        tabs.show(vm, {tabList: true, tabCreate: true})
+
+        // contagem para fazer a paginação
+        $http.get(`${url}/count`).then(response => {
+          vm.pages = Math.ceil(response.data.value / pageSize)
+          tabs.show(vm, {tabList: true, tabCreate: true})
+        })
       })
     }
 
