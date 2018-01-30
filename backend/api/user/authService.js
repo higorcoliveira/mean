@@ -28,7 +28,7 @@ const login = (req, res, next) => {
 
 		const { name, email } = user
 		res.json({ name, email, token })
-	  } 
+	  }
 	  else {
 	  	return res.status(400).send({errors: ['Usuário/Senha inválidos']})
 	  }
@@ -68,7 +68,7 @@ const signup = (req, res, next) => {
   if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
   	  return res.status(400).send({errors: ['Senhas não conferem.']})
   }
-  
+
   // já existe um usuário cadastrado?
   User.findOne({email}, (err, user) => {
 	  if (err) {
