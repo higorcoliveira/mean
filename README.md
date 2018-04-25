@@ -1,5 +1,6 @@
 # MEAN (MONGO + EXPRESS + ANGULAR + NODE)
 Test application using node, angular 1, express e mongodb
+Node version: 6.8.1
 
 Node modules:
 * bodyParser
